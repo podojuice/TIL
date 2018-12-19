@@ -2,32 +2,32 @@ import requests
 
 import random
 
-url = 'https://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=837'
+# url = 'https://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=837'
 
-response = requests.get(url, verify=False)
+# response = requests.get(url, verify=False)
 
-lotto_data = response.json()
+# lotto_data = response.json()
 
-real_numbers =[]
+# real_numbers =[]
 
-# for key in lotto_data:
+# # for key in lotto_data:
+# #     if 'drwtNo' in key:
+# #         real_numbers.append(lotto_data[key])
+
+# for key, value in lotto_data:
 #     if 'drwtNo' in key:
-#         real_numbers.append(lotto_data[key])
-
-for key, value in lotto_data:
-    if 'drwtNo' in key:
-        real_numbers.append(value)
-#우리는 보너스 넘버가 필요해!
-bonus_number = lotto_data['bnusNo']
-print(real_numbers)
+#         real_numbers.append(value)
+# #우리는 보너스 넘버가 필요해!
+# bonus_number = lotto_data['bnusNo']
+# print(real_numbers)
 
 
 
-numbers = list(range(1, 46))
+# numbers = list(range(1, 46))
 
-my_numbers = random.sample(numbers, 6)
+# my_numbers = random.sample(numbers, 6)
 
-print(sorted(my_numbers))
+# print(sorted(my_numbers))
 #우리는 리얼넘버 마이넘버 보너스 넘버가 있다.
 #1등: my_numbers == real_numbers
 #2등: 제일 어려움 real & my가, my의 나머지 하나가 bonus_number
@@ -41,3 +41,7 @@ print(sorted(my_numbers))
 #                 append(luckydraw)
 
 # print(luckydraw)
+
+
+myn=[1,2,3,4,5,6]
+ren=
