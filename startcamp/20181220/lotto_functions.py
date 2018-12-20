@@ -10,7 +10,7 @@ def pick_lotto():
 my_numbers = pick_lotto()
 # print('자동', my_numbers)
 
-#여기서 보면 return을 해줘야 픽 로또 함수가 뭐 뱉는 걸 알 수있음
+#여기서 보면 return을 해줘야 픽 로또 함수가 뭐 뱉는 걸 알 수있음!
 
 
 #get_lotto()를 정의해보자
