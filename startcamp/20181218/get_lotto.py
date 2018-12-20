@@ -18,6 +18,10 @@ for key, value in lotto_data.items():
 #우리는 보너스 넘버가 필요해!
 bonus_number = lotto_data['bnusNo']
 print(real_numbers)
+print(bonus_number)
+print(type(real_numbers))
+print(type(bonus_number))
+
 
 
 
