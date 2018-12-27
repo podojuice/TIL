@@ -44,4 +44,4 @@ def get_lotto(draw_no):
 print(a)
 print(type(a['numbers']))
     
-   
+   #adfasdf
