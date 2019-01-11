@@ -134,7 +134,7 @@ def keyword(word):
 
 이런 식으로 구성된 사이트일 것이다.
 
-이런 걸 가능하게 해주는 것이 variable routing. 위 처럼 한느 거다.
+이런 걸 가능하게 해주는 것이 variable routing. 위 처럼 한느 거다.!
 
 
 
