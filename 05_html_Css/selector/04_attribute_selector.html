@@ -8,7 +8,7 @@
         /* 어트리뷰트에 "first"가 있다면 */
         p[title~="first"] { color:lightgreen;}
         /* "second"와 바로 이어서 '-'가 오는 것까지 잡는다. */
-        p[title|="second"] { color: rgb(158, 32, 32);}
+        p[title|="second"] { color: red;}
         /* "second"로 시작하는 */
         p[title^="second"] { color: fuchsia; }
         /* ".net" 으로 끝나는 a */
@@ -25,7 +25,7 @@
     <a href="https://ssafy.net">SSAFY</a>
     <a>???</a>
     <hr>
-    <p title="first p">I'm P</p>
+    <p title="first-p">I'm P</p>
     <p title="second-p">I'm pp</p>
     <p title="p first">P I am</p>
     <p title="secondaa">PP I am</p>
