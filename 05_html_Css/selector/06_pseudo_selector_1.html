@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        /* a에 마우스를 올리면, */
+        a:hover { 
+            
+            font-weight: bold;
+            
+            }
+        /* input에 포커스가 가면, */
+        input:focus { background-color: hotpink; }
+    /* Link Pseudo Selector, User action pseudo selector */
+        /* a 링크를 방문하지 않았을 때, */
+        a:link { color: orchid;}
+        /* a 링크를 방문했을 때, */
+        a:visited { color: rgb(66, 11, 48); }
+        /* a 요소를 클릭하고 있는 상태일 때, */
+        a:active{ color: blue;}
+        /* input 타입이 text, password 인 요소들에 포커스가 갔을 때, */
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            color: red;
+        }
+
+    /* UI element state pseudo selector */
+        /* input이 사용 가능할때, input 요소 바로 뒤에 오는 형제 span */
+        input:enabled + span { color: blue;}
+        /* input이 사용 불가능할때, input 요소 바로 뒤에 오는 형제 span */
+        input:disabled + span { 
+            color: red;
+            text-decoration: line-through
+        
+        }
+        /* input이 checked 상태일 때, input 요소 바로 뒤에 오는 형제 span */
+        input:checked + span { color:tomato; }
+
+    /* structual pseudo selector */
+        /* 자식 요소라면, 그리고 자식 요소 중 첫번째 태그가 p라면, */
+        p:first-child { color:palegoldenrod; }
+        /* 태그 중 자신이 자식 요소인데 마지막 태그가 p라면, */
+        p:last-child { color: palegreen; }
+
+        /* ol의 자식요소 중 짝수 번째 애가 li라면, */
+        ol>li:nth-child(2n) { color: orange; }
+
+        /* ol의 자식요소 중 3번째부터 홀수 번째 애가 li라면, */
+        ol>li:nth-child(2n+1) { color: royalblue;}
+        /* ol의 자식요소 중 첫 번째 애가 li라면, */
+        ol> li:first-child { color: mediumseagreen;}
+        /* ol의 자식요소 중 마지막 번째 애가 li라면, */
+        ol>li:last-child { color: crimson;}
+
+        /* ol의 자식요소 중 4 번째 애가 li라면, */
+        ol>li:nth-child(4) { background: brown;}
+
+        /* ul의 자식요소 중 뒤에서부터 홀수번째 애에게 */
+        ul> :nth-last-child(2n+1) { color: gold;}
+        /* ul의 자식요소 중 뒤에서부터 짝수번째 애에게 */
+        ul> :nth-last-child(2n) { color:olivedrab;}
+        
+        
+        /* ?? 요소의 부모 요소의 자식 중 첫번째 등장하는 ?? 에게 */
+        p:first-of-type { color: red;}
+        /* ?? 요소의 부모 요소의 자식 중 마지막 등장하는 ?? 에게 */
+        p:last-of-type { color: sienna; }
+
+        p:nth-of-type(2)  { color: green;}
+
+        p:nth-last-of-type(2) { color: orange;}
+
+        p:first-child { background: royalblue;}
+
+
+    /* Negation pseudo select (부정 셀렉터) */
+        input:not([type="password"]) { background: black; }
+    </style>
+</head>
+<body>
+    <!-- <a href="#">ㅋ</a> -->
+    <p>이 p 태그는 부모(body) 의 첫째 자식입니다.</p>
+
+    <h1>Welcome to my HOMEPAGE</h1>
+    <p>이 p태그는 부모(body)의 첫째 자식이 아닙니다</p>
+
+    <div>
+        <p>이 p 태그는 부모(div) 의 첫째 자식입니다.</p>
+        <p>이 p 태그는 부모(div) 의 첫째 자식이 아닙니다.</p>
+
+    </div>
+
+    <div>
+        <h2>This is Heading2</h2>
+        <p>첫 번째 문단</p>
+        <p>두 번째 문단</p>
+        <p>세 번째 문단</p>
+        <p>네 번째 문단</p>
+
+        <div>
+            <h2>This is Heading3</h2>
+            <p>첫 번째 문단</p>
+            <p>두 번째 문단</p>
+            <p>세 번째 문단</p>
+            <p>네 번째 문단</p>
+        </div>
+    </div>
+
+
+
+    <div>
+        <ol>
+            <li>Espresso</li>
+            <li>Americano</li>
+            <li>Caffe latte</li>
+            <li>Caffe Mocha</li>
+            <li>Caramel Latte</li>
+            <li>Capuccino</li>
+        </ol>
+    </div>
+        <ul>
+            <li>Espresso</li>
+            <li>Americano</li>
+            <li>Caffe latte</li>
+            <li>Caffe Mocha</li>
+
+            <li>Caramel Latte</li>
+            <li>Capuccino</li>
+
+        </ul>
+
+    <a href="#">Hover me</a>
+    <br><br>
+    <input type="text" placeholder="Focus me">
+
+    <div>
+        <input type="text" value="I'll be red when focused">
+        <input type="password" value="I'll be red when focused">
+
+    </div>
+    <hr>
+
+    <form action="">
+        <input type="radio" value="메뉴A" checked="checked"> <span>순두부</span> <br>
+        <input type="radio" value="메뉴B"> <span>바베큐</span> <br>
+        <input type="radio" value="굶기" disabled> <span>굶기</span> <br>
+
+        <input type="checkbox" value="taxi" checked="checked"> <span>집에 택시</span><br>
+        <input type="checkbox" value="BM"> <span>대중교통</span> <br>
+        <input type="checkbox" value="Walk" disabled> <span>걷기</span>  <br>
+    </form>
+    
+</body>
+</html>
