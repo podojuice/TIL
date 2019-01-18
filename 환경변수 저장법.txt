@@ -22,4 +22,4 @@ KOBIS_KEY = os.getenv('KOBIS_KEY')
 http://www.kobis.or.kr/kobisopenapi/homepg/apikey/ckUser/findApikeyList.do
 
 네이버 영화 api 
-ㅋㅋㅋ
+ㅋㅋㅋz
