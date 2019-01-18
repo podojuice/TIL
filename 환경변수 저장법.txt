@@ -1,0 +1,25 @@
+배쉬에다가
+
+export KOBIS_KEY='키'
+
+export NAVER_CLIENT_ID='넣고'
+
+export NAVER_CLIENT_SECRET='시크릿'
+
+이렇게 넣으면 넣은 컴퓨터에는 저 변수에는 항상 저 키가 들어있음
+
+echo $KOBIS_KEY 해보면 내가 저장해뒀다면, 나온다.
+
+
+
+그리고 vscode에 
+
+import os
+
+KOBIS_KEY = os.getenv('KOBIS_KEY')
+이렇게 하면  컴퓨터에 때려박은 변수가 호출됨. 값을 내놔 해서 저장됨.
+
+http://www.kobis.or.kr/kobisopenapi/homepg/apikey/ckUser/findApikeyList.do
+
+네이버 영화 api 
+ㅋㅋㅋ
