@@ -1,0 +1,100 @@
+
+body {
+    height: 3000px;
+}
+
+div.my_header {
+    
+    background-image: url("https://libbykleinbooks.files.wordpress.com/2018/05/theater-curtains.jpg?w=1024");
+    height: 350px;
+    
+    
+    
+    
+}
+
+
+.footer {
+    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    background-color: rgba(200,0,0,0.4);
+    
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    bottom: 0; left: 0;
+    line-height: 30px;
+    padding-left: 20px;
+}
+
+.my_footer_top {
+    float: right;
+    padding-right: 20px;
+}
+
+.movie_index{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 3rem;
+
+}
+
+div.my_card {
+    margin-top: 1em; 
+    margin-bottom: 1em;
+    
+    
+}
+
+h2.my_header {
+    line-height: 160px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    font-size: 3em;
+    font-family: 'Gill Sans';
+    
+}
+
+
+h4 {
+    font-size: 15px;
+}
+
+h5 {
+    font-size: 13px;
+}
+
+hr.subline{
+    align-content: center;
+    width: 70px;
+    margin: 100px auto;
+    border: solid 2px red;
+    
+}
+
+.rating_box {
+    font-size: 13px;
+    background-color: blue;
+    padding: 3px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.rating_good {
+    font-size: 13px;
+    background-color: rgb(6, 149, 168);
+    padding: 3px 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.info_box {
+    background-color: rgb(34, 196, 34);
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+}

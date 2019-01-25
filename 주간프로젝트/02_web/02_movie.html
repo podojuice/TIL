@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <!-- Custom Css-->
+  <link rel="stylesheet" href="./02_movie.css">
+  <title>영화추천사이트</title>
+</head>
+
+<body>
+  <!-- Optional JavaScript
+    jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="#">영화평가시스템</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">친구평점보러가기</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="my_header">
+    <header class="my_header">
+      <h2 class="my_header"> 당신에게 어울리는 영화를 <br> 추천해드립니다.</h2>
+
+
+
+    </header>
+
+  </div>
+
+
+
+
+
+
+
+  <h3 class="movie_index">영화 목록</h3>
+  
+  <hr class="subline">
+  
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my_card">
+          <div class="card mb-4 shadow-sm" width>
+            <a href="#"><img src="./assets/20176251.jpg" alt="movie" width='100%' height='100%'></a>
+            <div class="card-body">
+              <h4 class="card-text"><strong>내 안의 그놈</strong> <span class="rating_box">8.69</span></h4>
+              <hr>
+              <h5>판타지</h5>
+              <h5>개봉일: 2019.01.09.</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group info_box">
+                  <button type="button" class="btn btn-sm btn-outline-secondary info_box" onclick = "location.href = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=164172'">영화정보 보러가기</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my_card">
+          <div class="card mb-4 shadow-sm" width>
+            <img src="./assets/20180290.jpg" alt="movie" width='100%' height='100%'>
+            <div class="card-body">
+              <h4 class="card-text"><strong>아쿠아맨</strong> <span class="rating_box">8.39</span></h4>
+              <hr>
+              <h5>액션</h5>
+              <h5>개봉일: 2018.12.19.</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group info_box">
+                  <button type="button" class="btn btn-sm btn-outline-secondary info_box" onclick = "location.href = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=151153' ">영화정보 보러가기</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my_card">
+          <div class="card mb-4 shadow-sm" width>
+            <img src="./assets/20182544.jpg" alt="movie" width='100%' height='100%'>
+            <div class="card-body">
+              <h4 class="card-text"><strong>글래스</strong> <span class="rating_box">7.69</span></h4>
+              <hr>
+              <h5>드라마</h5>
+              <h5>개봉일: 2019.01.17.</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group info_box">
+                  <button type="button" class="btn btn-sm btn-outline-secondary info_box" onclick = "location.href = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=163826' ">영화정보 보러가기</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my_card">
+          <div class="card mb-4 shadow-sm" width>
+            <img src="./assets/20184105.jpg" alt="movie" width='100%' height='100%'>
+            <div class="card-body">
+              <h4 class="card-text"><strong>말모이</strong> <span class="rating_good">9.04</span></h4>
+              <hr>
+              <h5>드라마</h5>
+              <h5>개봉일: 2019.01.09.</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group info_box">
+                  <button type="button" class="btn btn-sm btn-outline-secondary info_box" onclick = "location.href = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=167699' ">영화정보 보러가기</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my_card">
+          <div class="card mb-4 shadow-sm" width>
+            <img src="./assets/20186324.jpg" alt="movie" width='100%' height='100%'>
+            <div class="card-body">
+              <h4 class="card-text"><strong>언더독</strong> <span class="rating_good">9.49</span></h4>
+              <hr>
+              <h5>애니메이션</h5>
+              <h5>개봉일: 2019.01.16.</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group info_box">
+                  <button type="button" class="btn btn-sm btn-outline-secondary info_box" onclick = "location.href = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318' ">영화정보 보러가기</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 my_card">
+          <div class="card mb-4 shadow-sm" width>
+            <img src="./assets/20189463.jpg" alt="movie" width='100%' height='100%'>
+            <div class="card-body">
+              <h4 class="card-text"><strong>주먹왕 랄프2</strong> <span class="rating_box">8.76</span></h4>
+              <hr>
+              <h5>애니메이션</h5>
+              <h5>개봉일: 2019.01.03.</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group info_box">
+                  <button type="button" class="btn btn-sm btn-outline-secondary info_box" onclick = "location.href = 'https://movie.naver.com/movie/bi/mi/basic.nhn?code=152632' ">영화정보 보러가기</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div>
+        <span>@2019_SS3</span>
+        <span class="my_footer_top">
+          <a href="#">TOP</a>
+        </span>
+      </div>
+
+
+    </footer>
+
+</body>
+
+</html>
