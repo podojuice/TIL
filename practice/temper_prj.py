@@ -22,6 +22,7 @@ def get_weather(input_location):
     # summary = location.currently['summary']
     # t = datetime.utcfromtimestamp(location.time)
 
-    return f'{input_location}의 온도는 \'{temp}\'도입니다.'
+    # return f'{input_location}의 온도는 \'{temp}\'도입니다.'
+    return temp
 
 # print(get_weather('강남구'))
