@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sns',
     'django_extensions',
+    'movie',
+    'accounts',
 ]
 
 MIDDLEWARE = [

@@ -22,6 +22,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sns/', include('sns.urls')),
+    path('movie/', include('movie.urls')),
+    path('accounts/', include('accounts.urls'))
 
 ]
 
