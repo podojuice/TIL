@@ -1,0 +1,22 @@
+{% extends 'board_ad/base.html' %}
+
+{% block body %}
+
+    <h1>Post List</h1>
+
+    <a href=""><button>new</button></a>
+
+
+
+    <ul>
+        {% for post in posts %}
+            <li>
+
+                <a href="/board/articles/{{ post.id }}/">{{ post.title }}</a>
+
+            </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

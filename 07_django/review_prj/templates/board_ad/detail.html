@@ -1,0 +1,15 @@
+{% extends 'board_ad/base.html' %}
+
+{% block body %}
+
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ post.content }}</p>
+    <hr>
+    <a href="/"><button>List</button></a>
+    <a href="/{{ article.id }}/edit/"><button>Edit</button></a>
+    <form action="/{{ article.id }}/delete/">
+    {% csrf_token %}
+        <button>Delete</button>
+    </form>
+{% endblock %}
