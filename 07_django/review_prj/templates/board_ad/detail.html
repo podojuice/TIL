@@ -6,10 +6,44 @@
 
     <p>{{ post.content }}</p>
     <hr>
-    <a href="/"><button>List</button></a>
-    <a href="/{{ article.id }}/edit/"><button>Edit</button></a>
-    <form action="/{{ article.id }}/delete/">
+    <a href="{% url 'board_ad:posting_list' %}"><button>List</button></a>
+    <a href="{% url 'board_ad:update_posting' post.id %}"><button>Edit</button></a>
+    <form action="{% url 'board_ad:delete_posting' post.id %}" method="POST">
     {% csrf_token %}
-        <button>Delete</button>
+        <button type="submit" onclick="return confirm('확인');">Delete</button>
+    <button id="reset">WOW</button>
+        <script>
+            button=document.querySelector('#reset')
+            button.addEventListener('click', (e) => {
+                document.write('<h1>hahaha</h1>')
+            });
+        </script>
+    </form>
+
+    <hr>
+    {% if comments %}
+        <ul>
+        {% for comment in comments %}
+            <li>
+             {{ comment.content }}
+                <form action="{% url 'board_ad:delete_comment' posting_id=post.id comment_id=comment.id %}" method="POST">
+                    {% csrf_token %}
+                    <button>삭째</button>
+                </form>
+            </li>
+        {% endfor %}
+
+        </ul>
+
+    {% endif %}
+
+
+
+
+    <form action="{% url 'board_ad:create_comment' post.id %}" method="POST">
+    {% csrf_token %}
+        <label for="comment"></label>
+        <input type="text" id="comment" name="input_comment">
+        <input type="submit" value="대끌쓰기">
     </form>
 {% endblock %}
