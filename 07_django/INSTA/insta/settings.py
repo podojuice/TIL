@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'posts',
     'bootstrap4',
+    'onetoone',
+    'onetomany',
 ]
 
 MIDDLEWARE = [
