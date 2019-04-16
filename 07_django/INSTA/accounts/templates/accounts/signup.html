@@ -3,13 +3,10 @@
 {% load bootstrap4 %}
 
 {% block body %}
-    <h1>new_post</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <h1>sign up</h1>
+    <form action="{% url 'accounts:signup' %}" method="POST">
     {% csrf_token %}
-    {% bootstrap_form post_form %}
-    {% if image_form %}
-    {% bootstrap_form image_form show_label=False %}
-    {% endif %}
+    {% bootstrap_form form %}
     {% buttons %}
         <button type="submit" class="btn btn-primary">Submit</button>
     {% endbuttons %}

@@ -24,6 +24,23 @@ class Book(TimeStamp):
     description = models.TextField()
     author = models.ForeignKey(Writer, on_delete=models.PROTECT)
 
+
 class Chapter(TitleDescriptionModel, TimeStampedModel):
-    #이렇게 상속받으면, title, description, created, modified가 생긴다.
+    # 이렇게 상속받으면, title, description, created, modified가 생긴다.
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=20)
+
+
+class Message(models.Model):
+    content = models.CharField(max_length=10)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+
+class Reply(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    message = models.ForeignKey(Message, on_delete=models.CASCADE)
+    content = models.CharField(max_length=40)
+
