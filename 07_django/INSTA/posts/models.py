@@ -4,16 +4,6 @@ from imagekit.models import ProcessedImageField
 from django_extensions.db.models import TimeStampedModel
 from imagekit.processors import ResizeToFill
 
-# import os
-
-# ENV = os.environ.get('ENVIRONMNET', 'development')
-# if ENV == 'development':
-#     from IPython import em
-#     from faker import Faker
-
-
-# Create your models here.
-
 faker = Faker()
 
 
