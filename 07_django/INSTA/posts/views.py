@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Image
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
-from .forms import PostModelForm, ImageModelForm
+from .forms import PostModelForm, ImageModelForm, CommentModelForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -14,8 +14,11 @@ def create_post(request):
         post_form = PostModelForm(request.POST)
         # Data 검증을 한다.
         if post_form.is_valid():
+
             # 통과하면 저장한다.
-            post = post_form.save()
+            post = post_form.save(commit=False)
+            post.user = request.user
+            post.save()
             for image in request.FILES.getlist('file'):
                 request.FILES['file'] = image
                 image_form = ImageModelForm(files=request.FILES)
@@ -42,26 +45,51 @@ def create_post(request):
 @require_GET
 def post_list(request):
     posts = Post.objects.all()
-
+    user = request.user
+    comment_form = CommentModelForm()
     return render(request, 'posts/list.html', {
         'posts': posts,
+        'user': user,
+        'comment_form': comment_form,
     })
+
+
+@login_required
+@require_http_methods(['POST'])
+def create_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    form = CommentModelForm(data=request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.user = request.user
+        comment.post = post
+        comment.save()
+        return redirect('posts:post_list')
+    # FIXME else:
+
+
 
 
 @login_required
 @require_http_methods(['GET', 'POST'])
 def update_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    if request.method == 'POST':
-        post_form = PostModelForm(request.POST, instance=post)
-        if post_form.is_valid():
-            post_form.save()
-            return redirect('posts:post_list')
+    if post.user == request.user: # 지금 수정하려는 포스트 작성자가 요청 보낸 사람이라면,
+        if request.method == 'POST':
+            post_form = PostModelForm(request.POST, instance=post)
+            if post_form.is_valid():
+                post_form.save()
+                return redirect('posts:post_list')
+
+        else:
+            post_form = PostModelForm(instance=post)
+        return render(request, 'posts/form.html', {
+            'post_form': post_form
+        })
+    # 작성자와 요청 보낸 유저가 다르다면,
     else:
-        post_form = PostModelForm(instance=post)
-    return render(request, 'posts/form.html', {
-        'post_form': post_form
-    })
+        return redirect('posts:post_list')
+
 
 
     
