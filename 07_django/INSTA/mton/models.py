@@ -18,6 +18,14 @@ class Profile(models.Model):
 class Client(models.Model):
     name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return f'{self.id}: {self.name}'
+
+
+    # 기본값인것. id 순서대로 순서를 정하겠다는 것.
+    # class Meta:
+    #     ordering = ('id', )
+
     @classmethod
     def dummy(cls, n):
         for i in range(n):
@@ -26,7 +34,10 @@ class Client(models.Model):
 
 class Hotel(models.Model):
     name = models.CharField(max_length=30)
-    clients = models.ManyToManyField(Client)
+    clients = models.ManyToManyField(Client, related_name='hotels')
+
+    def __str__(self):
+        return f'{self.id}: {self.name}: {self.clients}'
 
     @classmethod
     def dummy(cls, n):
@@ -38,6 +49,7 @@ class Hotel(models.Model):
 
 # student 1: N Enroll N : 1 Lecture
 
+
 class Student(models.Model):
     name = models.CharField(max_length=30)
 
@@ -48,6 +60,7 @@ class Student(models.Model):
 class Lecture(models.Model):
     title = models.CharField(max_length=100)
     student = models.ManyToManyField(Student)
+
     def __str__(self):
         return f'{self.id}: {self.title}'
 

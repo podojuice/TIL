@@ -91,7 +91,19 @@ def update_post(request, post_id):
         return redirect('posts:post_list')
 
 
+# def create_like(request, post_id):
+#     user = request.user
+#     post = get_object_or_404(Post, id=post_id)
+#     post.like_users.add(user)
 
-    
-
-# Create your views here.
+@login_required
+@require_http_methods(['POST'])
+def toggle_like(request, post_id):
+    user = request.user
+    post = get_object_or_404(Post, id=post_id)
+    # if post.like_users.filter(id=user.id): ORM 버전. 밑에 건, 걍 파이썬문법 버전.
+    if user in post.like_users.all():
+        post.like_users.remove(user)
+    else:
+        post.like_users.add(user)
+    return redirect('posts:post_list')

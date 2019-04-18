@@ -15,7 +15,7 @@ def article_create(request):
     article.content = request.POST.get('input_content')
     article.save()
 
-    return redirect(f'/board_ad/articles/{article.id}')
+    return redirect(f'/board_ad/articles/{article.id}/')
 
 
 def article_list(request):

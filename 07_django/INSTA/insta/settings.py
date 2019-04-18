@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'posts',
     'bootstrap4',
     'onetoone',
-    'onetomany',
+    # 'onetomany',
     'accounts',
 ]
 
