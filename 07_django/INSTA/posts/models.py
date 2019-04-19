@@ -4,7 +4,7 @@ from imagekit.models import ProcessedImageField
 from django_extensions.db.models import TimeStampedModel
 from imagekit.processors import ResizeToFill
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 faker = Faker()
 

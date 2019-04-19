@@ -18,7 +18,7 @@
             </a>
         </div>
     {% else %}
-        <img src="https://picsum.photos/600" alt="random-image" class="card-img-top"/>
+        <img src="https://picsum.photos/600/?random" alt="random-image" class="card-img-top"/>
     {% endif %}
 
     <div class="card-body">
@@ -30,7 +30,7 @@
             </p>
 
         {% else %}
-            <p class="card-text">{{ post.user }}의 글 // {{ post.content }} </p>
+            <p class="card-text"><a href="{% url 'accounts:user_detail' post.user.username %}">{{ post.user }}</a> // {{ post.content }} </p>
         {% endif %}
 
     </div>
@@ -43,6 +43,7 @@
                 {% else %}
                 <input type="submit" class="btn btn-light" value="좋아요">
             {% endif %}
+{#            <a window.location.href="{% url 'posts:update_post' post_id %}"></a>#}
         </form>
         <p>좋아요 {{ post.like_users.all.count }}개</p>
     </div>
