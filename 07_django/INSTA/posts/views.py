@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from .models import Post, Image
+from .models import Post, Image, Hashtag
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 from .forms import PostModelForm, ImageModelForm, CommentModelForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required
@@ -19,6 +20,19 @@ def create_post(request):
             post = post_form.save(commit=False)
             post.user = request.user
             post.save()
+
+            #create hashtag
+            content = post_form.cleaned_data.get('content')
+            words = content.split() #띄어쓰기 기준 split
+            for word in words:
+                if word[0] == '#':
+                    word = word[1:]
+                    tag = Hashtag.objects.get_or_create(content=word)
+                    post.tags.add(tag[0])
+                    if tag[1]:
+                        messages.add_message(request, messages.SUCCESS, f'{tag[0]} 태그를 처음으로 추가하셨서요') # 태그가 처음 만들어졌을 경우
+
+
             for image in request.FILES.getlist('file'):
                 request.FILES['file'] = image
                 image_form = ImageModelForm(files=request.FILES)
@@ -79,6 +93,19 @@ def update_post(request, post_id):
             post_form = PostModelForm(request.POST, instance=post)
             if post_form.is_valid():
                 post_form.save()
+                #update hashtag
+                post.tags.clear()
+                # create hashtag
+                content = post_form.cleaned_data.get('content')
+                words = content.split()  # 띄어쓰기 기준 split
+                for word in words:
+                    if word[0] == '#':
+                        word = word[1:]
+                        tag = Hashtag.objects.get_or_create(content=word)
+                        post.tags.add(tag[0])
+                        if tag[1]:
+                            messages.add_message(request, messages.SUCCESS,
+                                                 f'{tag[0]} 태그를 처음으로 추가하셨서요')  # 태그가 처음 만들어졌을 경우
                 return redirect('posts:post_list')
 
         else:
@@ -107,3 +134,12 @@ def toggle_like(request, post_id):
     else:
         post.like_users.add(user)
     return redirect('posts:post_list')
+
+
+@require_GET
+def tag_posts_list(request, tag_name):
+    tag = get_object_or_404(Hashtag, content=tag_name)
+    posts = tag.posts.all()
+    return render(request, 'posts/list.html', {
+        'posts': posts,
+    })

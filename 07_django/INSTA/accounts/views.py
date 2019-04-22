@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from IPython import embed
 from posts.forms import CommentModelForm
+from django.contrib import messages
 
 
 @require_http_methods(['GET', 'POST'])
@@ -31,8 +32,11 @@ def login(request):
         return redirect('posts:post_list')
     if request.method == 'POST':
         form = CustomUserAuthenticationForm(request, data=request.POST)
+        # user = form.get_user()
         if form.is_valid():
             auth_login(request, form.get_user())
+            # messages.add_message(request, messages.SUCCESS, f'welcome back, {user.name}')
+            # messages.add_message(request, messages.INFO, f'last login, {user.last_login}')
             return redirect(request.GET.get('next') or 'posts:post_list')
     # 사용자가 로그인 화면을 요청할 때!
     else:
@@ -44,6 +48,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
+    messages.add_message(request, messages.SUCCESS, f'Logout Successfully')
     return redirect('posts:post_list')
 
 
