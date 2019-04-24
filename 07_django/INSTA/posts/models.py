@@ -1,11 +1,11 @@
 from django.db import models
-from faker import Faker
-from imagekit.models import ProcessedImageField
 from django_extensions.db.models import TimeStampedModel
-from imagekit.processors import ResizeToFill
 from django.conf import settings
 from django.contrib.auth.models import User, AbstractUser
 
+from faker import Faker
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 faker = Faker()
 
 
@@ -14,7 +14,6 @@ class Hashtag(models.Model):
 
     def __str__(self):
         return self.content
-
 
 
 class Post(TimeStampedModel):
