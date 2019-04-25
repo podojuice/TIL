@@ -13,5 +13,5 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserAuthenticationForm(AuthenticationForm):
     class Meta(AuthenticationForm):
         model = User
-        fields = ('username', 'email', )
+        fields = ('username', 'email',)
 
