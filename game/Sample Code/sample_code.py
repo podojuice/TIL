@@ -64,10 +64,8 @@ class GameData:
 def my(a, b, c, white, hole, ball):
 
 
-
-
     # 계산
-    power = a/2 + 19
+    power = a/2 + 10
 
     key = (hole[1] - white[1]) / (hole[0] - white[0]) # 흰공하고 홀
 
@@ -81,7 +79,7 @@ def my(a, b, c, white, hole, ball):
 
         C2 = math.acos(-((b + 15) ** 2 - a ** 2 - d ** 2) / (2 * a * d))
 
-        C1 = math.atan(y/x)
+        C1 = math.atan(x/y)
         print(1)
         if key < (ball[1] - white[1]) / (ball[0] - white[0]):
             result = abs(C1-C2)*(180/math.pi)
@@ -104,7 +102,7 @@ def my(a, b, c, white, hole, ball):
 
         C2 = math.acos(-((b + 15) ** 2 - a ** 2 - d ** 2) / (2 * a * d))
 
-        C1 = math.atan(y/x)
+        C1 = math.atan(x/y)
         print(2)
         if key < (ball[1] - white[1]) / (ball[0] - white[0]):
             result = 90 + (abs(C1 - C2) * (180 / math.pi))
@@ -133,7 +131,7 @@ def my(a, b, c, white, hole, ball):
 
         C2 = math.acos(-((b + 15) ** 2 - a ** 2 - d ** 2) / (2 * a * d))
 
-        C1 = math.atan(y/x)
+        C1 = math.atan(x/y)
         if key < (ball[1] - white[1]) / (ball[0] - white[0]):
             result = 180 + abs(C1 - C2) * (180 / math.pi)
         else:
@@ -156,7 +154,7 @@ def my(a, b, c, white, hole, ball):
 
         C2 = math.acos(-((b + 15) ** 2 - a ** 2 - d ** 2) / (2 * a * d))
 
-        C1 = math.atan(y/x)
+        C1 = math.atan(x/y)
         if key < (ball[1] - white[1]) / (ball[0] - white[0]):
             result = 270 + abs(C1 - C2) * (180 / math.pi)
         else:
