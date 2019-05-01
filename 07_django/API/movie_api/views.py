@@ -26,6 +26,8 @@ def one_movie(request, movie_id):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response({'message': 'Movie Edited!'})
+        else:
+            return R
     else:
         movie.delete()
         return Response({'message': 'Movie Deleted!'})
