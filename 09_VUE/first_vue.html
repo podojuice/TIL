@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<!--    이제 이 안에다가 뭐 적는거임. block body같은 느낌인거임.-->
+    {{ message }} - {{ count }}
+    <button v-on:click="reverseMessage">Reverse</button>
+    <button v-on:click="plus">Up</button>
+    <button v-on:click="minus">Down</button>
+</div>
+
+<div id="app1">
+{% for i in todos %}
+    <p>i</p>
+    {% endfor %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        // mount
+        el: '#app',
+
+        // app init state - MUST object
+        data: {
+            message: 'Hello World!',
+            count: 0,
+
+        },
+
+        methods: {
+            reverseMessage: function(){
+                this.message = this.message.split('').reverse().join('')
+            },
+              plus: function () {
+                  this.count++;
+              },
+            minus: function () {
+                this.count--;
+            }
+        }
+    });
+
+    app.plus();
+    const app1 = new Vue({
+        el: '#app1',
+        data: {
+            todos: [
+                { content: 'JS 배우기'} ,
+                { content: 'Vue'},
+                { content: '1'}
+            ]
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -35,17 +35,25 @@
 
     </div>
     <div class="card-body">
-
-        <form action="{% url 'posts:toggle_like' post.id %}" method="POST">
-            {% csrf_token %}
-            {% if user in post.like_users.all %}
-                <input type="submit" class="btn btn-light" value="좋아요 취소">
-                {% else %}
-                <input type="submit" class="btn btn-light" value="좋아요">
-            {% endif %}
+<!-- 좋아요 -->
+{#        <form action="{% url 'posts:toggle_like' post.id %}" method="POST">#}
+{#            {% csrf_token %}#}
+{#            {% if user in post.like_users.all %}#}
+{#                <input type="submit" class="btn btn-light" value="좋아요 취소">#}
+{#                {% else %}#}
+{#                <input type="submit" class="btn btn-light" value="좋아요">#}
+{#            {% endif %}#}
 {#            <a window.location.href="{% url 'posts:update_post' post_id %}"></a>#}
-        </form>
-        <p>좋아요 {{ post.like_users.all.count }}개</p>
+{#        </form>#}
+
+{#    좋아요 버튼 2#}
+    {% if user in post.like_users.all %}
+        <i class="fas fa-thumbs-up fa-2x activate like-button" data-id="{{ post.id }}"></i>
+    {% else %}
+        <i class="fas fa-thumbs-up fa-2x like-button" data-id="{{ post.id }}"></i>
+    {% endif %}
+    <p class="card-text">좋아요 <span id="like-count-{{ post.id }}">{{ post.like_users.count }}</span>개</p>
+
     </div>
 
     <div class="card-body">

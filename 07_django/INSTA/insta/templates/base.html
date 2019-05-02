@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>insta</title>
 {% include '_cdns.html' %}
+    <style>
+        .activate {
+            color: dodgerblue;
+        }
+    </style>
 </head>
 <body>
 {% include '_navbar.html' %}
@@ -18,9 +23,57 @@
     {% endblock %}
 </div>
 {% include '_scripts.html' %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    function getCookies() {
+        const cookieSet = {};
+        document.cookie.split('; ').forEach(cookieString => {
+            const kv = cookieString.split('=');
+            cookieSet[kv[0]] = kv[1];
+        });
+        return cookieSet
+    }
+
+    const likeButtons = document.querySelectorAll('.like-button');
+    console.log(likeButtons);
+    getCookies().csrftoken
+
+    likeButtons.forEach(button => {
+        console.log('hi');
+        button.addEventListener('click', e => {
+            const postId = button.dataset.id;
+            const URL = `/insta/${postId}/like/`;
+
+            // request에 cookie 중 csrftoken이라는 key 값을 가진 친구를 같이 보내라.
+            axios.defaults.xsrfCookieName = 'csrftoken';
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+            axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+            axios.post(URL)
+
+
+            .then(response => {
+                const likeCountArea = document.querySelector(`#like-count-${postId}`);
+                console.log(response);
+                likeCountArea.innerHTML = response.data.likeCount;
+                console.log(e.target);
+                if (response.data.is_active) {
+                    e.target.classList.add('activate');
+                    console.log('bye')
+                } else {
+                    e.target.classList.remove('activate');
+                    console.log('hi')
+                }
+            }
+
+            )
+        })
+    })
+</script>
 </body>
 </html>
 
 {% block JS %}
 
 {% endblock %}
+

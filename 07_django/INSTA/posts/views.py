@@ -4,6 +4,7 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 from .forms import PostModelForm, ImageModelForm, CommentModelForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse, HttpResponseBadRequest
 
 
 @login_required
@@ -126,15 +127,24 @@ def update_post(request, post_id):
 @login_required
 @require_http_methods(['POST'])
 def toggle_like(request, post_id):
-    user = request.user
-    post = get_object_or_404(Post, id=post_id)
-    # if post.like_users.filter(id=user.id): ORM 버전. 밑에 건, 걍 파이썬문법 버전.
-    if user in post.like_users.all():
-        post.like_users.remove(user)
-    else:
-        post.like_users.add(user)
-    return redirect('posts:post_list')
+    if request.is_ajax():
+        user = request.user
+        post = get_object_or_404(Post, id=post_id)
+        is_active = True
+        # if post.like_users.filter(id=user.id): ORM 버전. 밑에 건, 걍 파이썬문법 버전.
+        if user in post.like_users.all():
+            post.like_users.remove(user)
+            is_active = False
+        else:
+            post.like_users.add(user)
+            is_active = True
+        return JsonResponse({
+            'likeCount': post.like_users.count(),
+            'is_active': is_active
 
+        })
+    else:
+        return HttpResponseBadRequest()
 
 @require_GET
 def tag_posts_list(request, tag_name):
