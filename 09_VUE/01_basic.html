@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>01_basic</title>
+</head>
+<body>
+<h1>hi</h1>
+
+<div id="app1">
+    <input type="text" v-on:input="changeTitle($event, '따봉')">
+    <p>{{ message }}</p>
+    <p>{{ greet() }}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app1', // vue instance <=> HTML el binding
+        data: { // 해당 script 가 실행되면 init 같이 처음으로 실행되는 data 세트들
+            message: 'Hi',
+
+        },
+        methods: { // 해당 script 가 실행되면 init 같이 처음으로 실행되는 function 세트들
+            greet: function () {
+                return this.message;
+            },
+            changeTitle: function (e, word) {
+                this.message = e.target.value;
+                this.message += word;
+            }
+        },
+    })
+
+</script>
+</body>
+</html>
