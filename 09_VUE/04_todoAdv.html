@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        .completed {
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <select v-model="status">
+        <option value="all">모두 보기</option>
+        <option value="active" selected>안 끝</option>
+        <option value="completed">끝!</option>
+    </select>
+    <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo()">
+    <button @click="addTodo()">+</button>
+    <button @click="clear()">Clear Completed</button>
+    <ol v-if="todos.length">
+<!--        <li v-for="todo in todos" v-on:click="check(todo)" v-bind:class="{competed: todo.completed}">-->
+        <li
+                v-for="todo in groupTodos"
+                v-bind:class="todo.completed ? 'completed': ''"
+                :key="todo.id"
+        >
+            <input type="checkbox" v-model="todo.completed">
+            {{ todo.content }}
+        </li>
+<!--        <li v-else v-on:click="check(todo)">[완료!]</li>-->
+    </ol>
+</div>
+
+<script src="./vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            todos: [
+                {
+                    id : 1,
+                    content: '저녁',
+                    completed: true,
+                },
+                {
+                    id : 2,
+                    content: '시험',
+                    completed: false,
+                },
+                {
+                    id : 3,
+                    content: '집',
+                    completed: false,
+                },
+                {
+                    id : 4,
+                    content: '행복',
+                    completed: false,
+                },
+            ],
+            newTodo: '',
+            status: '',
+
+        },
+        methods: {
+            check: function (todo={}) {
+                todo.completed = !todo.completed;
+            },
+            addTodo() {
+                if (this.newTodo) {
+                    this.todos.push({
+                        id: Date.now(),
+                        content: this.newTodo,
+                        completed: false,
+                    });
+                    this.newTodo="";
+                }
+            },
+            clear() {
+                this.todos = this.todos.filter(res => !res.completed);
+            },
+        },
+        computed: {
+            groupTodos: function () {
+                if (this.status === 'active') {
+                    return this.todos.filter(todo => !todo.completed);
+
+                } else if (this.status === 'completed') {
+                    return this.todos.filter(todo => todo.completed);
+                } else {
+                    return this.todos
+                }
+            }
+        },
+    })
+</script>
+</body>
+</html>

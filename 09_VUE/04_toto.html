@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <a v-bind:href="url">Google</a>
+    <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo()">
+    <button @click="addTodo()">+</button>
+    <button @click="clear()">Clear Completed</button>
+    <ol>
+        <li v-if="!todo.completed" v-for="todo in todos" v-on:click="check(todo)">
+            {{ todo.content }}
+
+        </li>
+        <li v-else v-on:click="check(todo)">[완료!]</li>
+    </ol>
+</div>
+
+<script src="./vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            url: 'https://google.com',
+            todos: [
+                {
+                    content: '저녁',
+                    completed: true,
+                },
+                {
+                    content: '시험',
+                    completed: false,
+                },
+                {
+                    content: '집',
+                    completed: false,
+                },
+                {
+                    content: '행복',
+                    completed: false,
+                },
+            ],
+            newTodo: ''
+        },
+        methods: {
+            check: function (todo={}) {
+                todo.completed = !todo.completed;
+            },
+            addTodo() {
+                if (this.newTodo) {
+                    this.todos.push({
+                        content: this.newTodo,
+                        completed: false,
+                    });
+                    this.newTodo="";
+                }
+            },
+            clear() {
+                this.todos = this.todos.filter(res => !res.completed);
+
+            }
+
+        },
+    })
+</script>
+</body>
+</html>

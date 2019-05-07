@@ -15,9 +15,11 @@
 </div>
 
 <div id="app1">
-{% for i in todos %}
-    <p>i</p>
-    {% endfor %}
+<ol>
+    <li v-for="todo in todos">
+        {{ todo.content }}
+    </li>
+</ol>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -37,9 +39,9 @@
             reverseMessage: function(){
                 this.message = this.message.split('').reverse().join('')
             },
-              plus: function () {
-                  this.count++;
-              },
+            plus: function () {
+                this.count++;
+            },
             minus: function () {
                 this.count--;
             }

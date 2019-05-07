@@ -1,3 +1,29 @@
+function myFunc () {
+    return n => n+1
+}
+
+
+const num_101 = myFunc()(100);
+
+function func1 (cb1, cb2) {
+    console.log(1);
+    cb1(cb2(cb1))
+}
+
+function func2 (callback) {
+    console.log(2);
+}
+function func3 (callback) {
+    console.log(3);
+}
+
+func1(func2, func3); // 1 3 2 순서대로 실행. 제일 안에 있는 cb1은 ()가 없으니 실행 x
+
+
+
+
+
+
 //  인자로 배열을 받는다. 해당 배열의 모든 요소를 더해서 더한 숫자를 리턴한다.
 
 const numbersEachAdd = numbers => {
