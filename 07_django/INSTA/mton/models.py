@@ -19,7 +19,7 @@ class Client(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
-        return f'{self.id}: {self.name}'
+        return self.id + ':'+self.name
 
 
     # 기본값인것. id 순서대로 순서를 정하겠다는 것.
@@ -37,7 +37,7 @@ class Hotel(models.Model):
     clients = models.ManyToManyField(Client, related_name='hotels')
 
     def __str__(self):
-        return f'{self.id}: {self.name}: {self.clients}'
+        return self.id +':' + self.name+':'+ self.clients
 
     @classmethod
     def dummy(cls, n):
@@ -54,7 +54,7 @@ class Student(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
-        return f'{self.id}: {self.name}'
+        return self.id +':' + self.name
 
 
 class Lecture(models.Model):
@@ -62,7 +62,7 @@ class Lecture(models.Model):
     student = models.ManyToManyField(Student)
 
     def __str__(self):
-        return f'{self.id}: {self.title}'
+        return self.id +':' + self.title
 
 
 class Enroll(models.Model):
@@ -70,5 +70,5 @@ class Enroll(models.Model):
     lecture = models.ForeignKey(Lecture, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.id} - {self.student.name}: {self.lecture.title}'
+        return self.id +':' + self.student.name
 
