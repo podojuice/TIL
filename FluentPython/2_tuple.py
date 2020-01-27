@@ -109,6 +109,5 @@ print(t, id(t))
 
 # bisect 87p.
 
-# 메모리 뷰
 
 
